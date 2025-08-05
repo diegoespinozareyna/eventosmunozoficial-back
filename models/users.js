@@ -1,5 +1,5 @@
 // models/User.js
-import db from '../db/db.js';
+import dbUsersMunoz from '../db/dbUsersMunoz.js';
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
@@ -29,6 +29,6 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-const UsersModel = db.model('Users', userSchema);
+const UsersModel = dbUsersMunoz.model('Users', userSchema);
 
 export { UsersModel };

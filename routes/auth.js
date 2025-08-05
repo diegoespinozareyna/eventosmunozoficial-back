@@ -85,6 +85,10 @@ import { handleGetEventos } from '../handlers/handleGetEventos.js';
 import { handleNewEventos } from '../handlers/handleNewEventos.js';
 import { handleGetEventId } from '../handlers/handleGetEventId.js';
 import { handlePatchEventId } from '../handlers/handlePatchEventId.js';
+import { handleCompraAsiento } from '../handlers/handleCompraAsiento.js';
+import { handleGetAsientosIdMatrix } from '../handlers/handleGetAsientosIdMatrix.js';
+import { handleReservaFutbol } from '../handlers/handleReservaFutbol.js';
+import { handleGetReservaFutbol } from '../handlers/handleGetReservaFutbol.js';
 
 const app = express();
 
@@ -1085,7 +1089,7 @@ router.post("/getUser", async (req, res) => {
         const user = await UsersModel.findOne({ documentoUsuario }).exec();
 
         return res.status(200).json({
-            message: "Usuario obtenido desde la base de datos",
+            message: "Usuario obtenido desde la base de datos de munoz222",
             data: user,
             status: 200,
         });
@@ -1760,5 +1764,13 @@ router.get("/getEventos", handleGetEventos);
 router.post("/newEvent", handleNewEventos);
 router.get("/getEventId", handleGetEventId);
 router.patch("/patchEventId", handlePatchEventId);
+
+// Asientos
+router.post("/compraAsiento", handleCompraAsiento);
+router.get("/getAsientosIdMatrix", handleGetAsientosIdMatrix);
+
+// reserva cancha de futbol
+router.post("/reservaFutbol", handleReservaFutbol);
+router.get("/getFechaReservaFutbol", handleGetReservaFutbol);
 
 export default router;
