@@ -21,88 +21,90 @@ export const handleReservaFutbol = async (req, res) => {
                 $gte: startOfDay,
                 $lte: endOfDay,
             },
+            cancha: "0"
         });
 
         console.log("reservas: ", reservas)
 
-        if (typeFutbol === "0") {
-            if (reservas.length > 0) {
-                console.log("entre1")
-                const reservasEditadas = await Promise.all(
-                    body?.filter(x => x.status !== "0")?.map(async (reserva) => {
-                        const {
-                            fecha,
-                            cancha,
-                            status,
-                            horario,
-                            precio,
-                            documentoUsuario,
-                            nombres,
-                            apellidoPaterno,
-                            apellidoMaterno,
-                        } = reserva;
+        // if (typeFutbol === "0") {
+        if (reservas.length > 0) {
+            console.log("entre1")
+            const reservasEditadas = await Promise.all(
+                body?.map(async (reserva) => {
+                    const {
+                        fecha,
+                        cancha,
+                        status,
+                        horario,
+                        precio,
+                        documentoUsuario,
+                        nombres,
+                        apellidoPaterno,
+                        apellidoMaterno,
+                    } = reserva;
 
-                        const id = reservas.find(x => x.horario === horario)?._id;
+                    const id = reservas.find(x => x.horario === horario)?._id;
+                    const canchaFutbol7 = reservas.find(x => x.horario === horario)?.cancha;
 
-                        return await ReservaFutbol.findByIdAndUpdate(
-                            id,
-                            {
-                                $set: {
-                                    status,
-                                    horario,
-                                    precio,
-                                    documentoUsuario,
-                                    nombres,
-                                    apellidoPaterno,
-                                    apellidoMaterno
-                                }
-                            },
-                            { new: true } // Devuelve el documento actualizado
-                        );
-                    })
-                );
-                return res.status(201).json({
-                    message: "Reserva creada correctamente",
-                    data: reservasEditadas,
-                    status: 201,
-                });
-            }
-            else {
-                console.log("entre2")
-                const reservasCreadas = await Promise.all(
-                    body?.map(async (reserva) => {
-                        const {
-                            fecha,
-                            cancha,
-                            status,
-                            horario,
-                            precio,
-                            documentoUsuario,
-                            nombres,
-                            apellidoPaterno,
-                            apellidoMaterno
-                        } = reserva;
-
-                        return await ReservaFutbol.create({
-                            fecha,
-                            cancha,
-                            status,
-                            horario,
-                            precio,
-                            documentoUsuario,
-                            nombres,
-                            apellidoPaterno,
-                            apellidoMaterno,
-                        });
-                    })
-                );
-                return res.status(201).json({
-                    message: "Reserva creada correctamente",
-                    data: reservasCreadas,
-                    status: 201,
-                });
-            }
+                    return await ReservaFutbol.findByIdAndUpdate(
+                        id,
+                        {
+                            $set: {
+                                status,
+                                horario,
+                                precio,
+                                documentoUsuario,
+                                nombres,
+                                apellidoPaterno,
+                                apellidoMaterno
+                            }
+                        },
+                        { new: true } // Devuelve el documento actualizado
+                    );
+                })
+            );
+            return res.status(201).json({
+                message: "Reserva creada correctamente",
+                data: reservasEditadas,
+                status: 201,
+            });
         }
+        else {
+            console.log("entre2")
+            const reservasCreadas = await Promise.all(
+                body?.map(async (reserva) => {
+                    const {
+                        fecha,
+                        cancha,
+                        status,
+                        horario,
+                        precio,
+                        documentoUsuario,
+                        nombres,
+                        apellidoPaterno,
+                        apellidoMaterno
+                    } = reserva;
+
+                    return await ReservaFutbol.create({
+                        fecha,
+                        cancha,
+                        status,
+                        horario,
+                        precio,
+                        documentoUsuario,
+                        nombres,
+                        apellidoPaterno,
+                        apellidoMaterno,
+                    });
+                })
+            );
+            return res.status(201).json({
+                message: "Reserva creada correctamente",
+                data: reservasCreadas,
+                status: 201,
+            });
+        }
+        // }
 
 
     } catch (error) {

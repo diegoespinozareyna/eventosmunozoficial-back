@@ -89,6 +89,8 @@ import { handleCompraAsiento } from '../handlers/handleCompraAsiento.js';
 import { handleGetAsientosIdMatrix } from '../handlers/handleGetAsientosIdMatrix.js';
 import { handleReservaFutbol } from '../handlers/handleReservaFutbol.js';
 import { handleGetReservaFutbol } from '../handlers/handleGetReservaFutbol.js';
+import { handleGetReservaFutbol7 } from '../handlers/handleGetReservaFutbol7.js';
+import { handleReservaFutbol7 } from '../handlers/handleReservaFutbol7.js';
 
 const app = express();
 
@@ -1771,6 +1773,8 @@ router.get("/getAsientosIdMatrix", handleGetAsientosIdMatrix);
 
 // reserva cancha de futbol
 router.post("/reservaFutbol", handleReservaFutbol);
+router.post("/reservaFutbol7", handleReservaFutbol7);
 router.get("/getFechaReservaFutbol", handleGetReservaFutbol);
+router.get("/getFechaReservaFutbol7", handleGetReservaFutbol7);
 
 export default router;
