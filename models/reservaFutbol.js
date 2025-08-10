@@ -12,6 +12,7 @@ const reservaFutbolSchema = new mongoose.Schema(
         nombres: String,
         apellidoPaterno: String,
         apellidoMaterno: String,
+        urlPago: String,
     },
     {
         timestamps: true,

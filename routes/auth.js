@@ -91,6 +91,11 @@ import { handleReservaFutbol } from '../handlers/handleReservaFutbol.js';
 import { handleGetReservaFutbol } from '../handlers/handleGetReservaFutbol.js';
 import { handleGetReservaFutbol7 } from '../handlers/handleGetReservaFutbol7.js';
 import { handleReservaFutbol7 } from '../handlers/handleReservaFutbol7.js';
+import { handleReservaPersonaFutbol } from '../handlers/handleReservaPersonaFutbol.js';
+import { handleGetReservasPersonaFutbol } from '../handlers/handleGetReservasPersonaFutbol.js';
+import { handleChangeStatusReserva } from '../handlers/changeStatusReserva.js';
+import { handleGetVouchersReservaCancha } from '../handlers/handleGetVouchersReservaCancha.js';
+import { handleSubirVoucherReservaFutbol } from '../handlers/handleSubirVoucherReservaFutbol.js';
 
 const app = express();
 
@@ -1776,5 +1781,11 @@ router.post("/reservaFutbol", handleReservaFutbol);
 router.post("/reservaFutbol7", handleReservaFutbol7);
 router.get("/getFechaReservaFutbol", handleGetReservaFutbol);
 router.get("/getFechaReservaFutbol7", handleGetReservaFutbol7);
+router.post("/reservaPersonaFutbol", handleReservaPersonaFutbol);
+router.get("/getReservasPersonaFutbol", handleGetReservasPersonaFutbol);
+router.patch("/changeStatusReserva", handleChangeStatusReserva);
+router.get("/getVouchersReservaCancha", handleGetVouchersReservaCancha);
+router.post("/subirVoucherReservaFutbol", handleSubirVoucherReservaFutbol);
+
 
 export default router;
