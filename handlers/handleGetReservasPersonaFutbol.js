@@ -16,12 +16,26 @@ export const handleGetReservasPersonaFutbol = async (req, res) => {
         console.log('🌅 startOfDay:', startOfDay.toISOString());
         console.log('🌇 endOfDay:', endOfDay.toISOString());
 
-        const reservas = await ReservaPersonaFutbol.find({
+        const filtro = {
             fecha: {
                 $gte: startOfDay,
                 $lte: endOfDay,
             },
-        });
+            documentoUsuario,
+            status,
+        }
+
+        if (documentoUsuario == "" || documentoUsuario == null || documentoUsuario == undefined) {
+            delete filtro["documentoUsuario"];
+        }
+
+        if (status == "" || status == null || status == undefined) {
+            delete filtro["status"];
+        }
+
+        console.log(filtro)
+
+        const reservas = await ReservaPersonaFutbol.find(filtro);
         res.status(201).json({
             message: "Reservas obtenidas desde la base de datos",
             data: reservas,

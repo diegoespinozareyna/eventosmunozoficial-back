@@ -96,6 +96,10 @@ import { handleGetReservasPersonaFutbol } from '../handlers/handleGetReservasPer
 import { handleChangeStatusReserva } from '../handlers/changeStatusReserva.js';
 import { handleGetVouchersReservaCancha } from '../handlers/handleGetVouchersReservaCancha.js';
 import { handleSubirVoucherReservaFutbol } from '../handlers/handleSubirVoucherReservaFutbol.js';
+import { handleEditVoucherReservaFutbol } from '../handlers/handleEditVoucherReservaFutbol.js';
+import { handleGetConfigsReservaFutbol } from '../handlers/handleGetConfigsReservaFutbol.js';
+import { handlePostConfigsReservaFutbol } from '../handlers/handlePostConfigsReservaFutbol.js';
+import { handleLiberarHorarios } from '../handlers/handleLiberarHorarios.js';
 
 const app = express();
 
@@ -1786,6 +1790,9 @@ router.get("/getReservasPersonaFutbol", handleGetReservasPersonaFutbol);
 router.patch("/changeStatusReserva", handleChangeStatusReserva);
 router.get("/getVouchersReservaCancha", handleGetVouchersReservaCancha);
 router.post("/subirVoucherReservaFutbol", handleSubirVoucherReservaFutbol);
-
+router.patch("/getEditVoucherReservaFutbol", handleEditVoucherReservaFutbol);
+router.get("/getConfigsReservaFutbol", handleGetConfigsReservaFutbol);
+router.patch("/postConfigsReservaFutbol", handlePostConfigsReservaFutbol);
+router.patch("/liberarHorarios", handleLiberarHorarios);
 
 export default router;
