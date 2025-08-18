@@ -3,25 +3,28 @@ import mongoose from 'mongoose';
 
 const compraAsientoSchema = new mongoose.Schema(
     {
-        status: String, // "0": disponible, "1": comprado
+        status: String, // "0": pendiente, "1": aprobado, "2": rechazado, "3": anulado
         documentoUsuario: String,
         nombres: String,
         apellidoPaterno: String,
         apellidoMaterno: String,
-        codAsiento: String,
+        codAsiento: String, // numero de asiento
         precio: String,
-        codMatrixTicket: String,
+        codMatrixTicket: String, // codigo id de evento
+        idCompraTicket: String, // id de compra de ticket
         fileUrl: String,
         compraUserAntiguo: Boolean,
         proyecto: String,
         usuarioRegistro: String,
+        patrocinadorId: String,
+        fechaFin: Date,
     },
     {
         timestamps: true,
         collection: 'compraAsiento'
     },
 );
-                                              
+
 const CompraAsiento = db1.model('CompraAsiento', compraAsientoSchema);
 
 export default CompraAsiento;                                                                      

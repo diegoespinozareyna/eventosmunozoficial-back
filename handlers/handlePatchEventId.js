@@ -5,11 +5,11 @@ export const handlePatchEventId = async (req, res) => {
         const { id, proyecto } = req.query;
         console.log("id: ", id, proyecto)
 
-        const { title, dateEvent, urlFlyer, capacity } = req.body;
+        const { title, dateEvent, urlFlyer, capacity, precioEntradaGeneral, precioEntradaPremium } = req.body;
 
         const evento = await Eventos.findOneAndUpdate(
             { _id: id, proyecto: proyecto },
-            { $set: { title, dateEvent, urlFlyer, capacity } },
+            { $set: { title, dateEvent, urlFlyer, capacity, precioEntradaGeneral, precioEntradaPremium } },
             { new: true } // Devuelve el documento actualizado
         );
 

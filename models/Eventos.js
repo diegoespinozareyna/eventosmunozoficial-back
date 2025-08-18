@@ -8,6 +8,8 @@ const eventosSchema = new mongoose.Schema(
         dateEvent: String,
         urlFlyer: String,
         proyecto: String,
+        precioEntradaGeneral: String,
+        precioEntradaPremium: String,
     },
     {
         timestamps: true,

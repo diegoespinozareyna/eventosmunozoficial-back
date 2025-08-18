@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import cors from 'cors';
+import usersRouter from './routes/users.routes.js';
+import eventosRouter from './routes/eventos.routes.js';
 
 dotenv.config();
 
@@ -16,6 +18,8 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.text({ limit: '200mb' }));
 
 app.use('/api/auth', authRoutes);
+app.use('/api/users', usersRouter);
+app.use('/api/eventos', eventosRouter);
 
 const PORT = process.env.PORT || 7000;
 const HOST = "0.0.0.0";

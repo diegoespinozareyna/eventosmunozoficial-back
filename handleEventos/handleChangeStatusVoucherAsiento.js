@@ -1,35 +1,31 @@
-import { ReservaPersonaFutbol } from "../models/reservaPersonaFutbol.js";
+import { PagoAsientoEventoModel } from "../modelsEventos/pagoAsientoEvento.js";
 
-
-export const handleChangeStatusReserva = async (req, res) => {
+export const handleChangeStatusVoucherAsiento = async (req, res) => {
     try {
         const body = await req.body;
 
-        const { status, id, comentario } = body;
+        const { id, status, comentario } = body;
 
-        console.log("body de changeStatusReserva: ", body)
+        console.log("body de changeStatusVoucherAsiento: ", body)
 
-        const updatedPedido = await ReservaPersonaFutbol.findByIdAndUpdate(
-            id,
-            {
-                status: status,
-                comentario: comentario
-            },
+        const updatedAsiento = await PagoAsientoEventoModel.findOneAndUpdate(
+            { _id: id },
+            { $set: { status, comentario } },
             { new: true }
         );
 
         // Si no se encontró el voucher
-        if (!updatedPedido) {
+        if (!updatedAsiento) {
             return res.status(402).json({
                 message: "Lo Sentimos",
-                messageLarge: "Pedido no existe o ha sido borrado de la base de datos",
+                messageLarge: "Voucher no existe o ha sido borrado de la base de datos",
             });
         }
 
         // Respuesta exitosa
         return res.status(201).json({
             message: "Status actualizado correctamente",
-            pedido: updatedPedido,
+            pagoAsientoEvento: updatedAsiento,
             status: 201,
         });
     } catch (error) {

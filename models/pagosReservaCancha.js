@@ -15,6 +15,7 @@ const pagosReservaCanchaSchema = new mongoose.Schema(
         status: String, // "0" eliminado, "1" vigente
         observaciones: String,
         proyecto: String,
+        horarios: String,
         url: String,
     },
     {
