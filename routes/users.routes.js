@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { UsersModel } from '../models/users.js';
+import { handleGetPatrocinadoresUnique } from '../handleUsers/handleGetPatrocinadoresUnique.js';
 
 const router = Router();
 
@@ -17,5 +18,7 @@ router.get('/getUsersPatrocinadores', async (req, res) => {
     });
 
 });
+
+router.get('/getPatrocinadoresUnique', handleGetPatrocinadoresUnique);
 
 export default router;
