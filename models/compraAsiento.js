@@ -8,16 +8,17 @@ const compraAsientoSchema = new mongoose.Schema(
         nombres: String,
         apellidoPaterno: String,
         apellidoMaterno: String,
+        celular: String,
         codAsiento: String, // numero de asiento
         precio: String,
         codMatrixTicket: String, // codigo id de evento
-        idCompraTicket: String, // id de compra de ticket
         fileUrl: String,
         compraUserAntiguo: Boolean,
         proyecto: String,
         usuarioRegistro: String,
         patrocinadorId: String,
         fechaFin: Date,
+        montoPasarela: String,
     },
     {
         timestamps: true,
