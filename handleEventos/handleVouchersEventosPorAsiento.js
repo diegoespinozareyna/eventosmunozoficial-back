@@ -14,9 +14,9 @@ export const handleVouchersEventosPorAsiento = async (req, res) => {
 
         const vouchers = await PagoAsientoEventoModel.find({
             idTicketAsiento: idIcketAsiento,
-            codAsiento: codAsiento,
-            codEvento: id,
-            proyecto,
+            // codAsiento: codAsiento, // A01
+            // codEvento: id,
+            // proyecto,
         });
 
         if (vouchers.length === 0) {
