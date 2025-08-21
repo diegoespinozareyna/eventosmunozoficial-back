@@ -33,11 +33,16 @@ export const handleGetAsientosIdMatrix = async (req, res) => {
                 console.log("idTicketAsiento111: ", idTicketAsiento)
                 console.log("_id111: ", _id)
                 const response = await PagoAsientoEventoModel.find({ idTicketAsiento: _id, status: "0" });
+                const response2 = await PagoAsientoEventoModel.find({ idTicketAsiento: _id, status: "1" });
 
                 array.push({
                     codAsiento: codAsiento,
                     ticketsPendings: response.length,
                     pasarela: montoPasarela ? true : false,
+                    vouchersTotales: response2.map(item => ({
+                        status: item.status,
+                        url: item.url,
+                    })),
                 });
 
                 item[codAsiento] = response.length > 0 ? true : false;
@@ -46,6 +51,10 @@ export const handleGetAsientosIdMatrix = async (req, res) => {
                     codAsiento: codAsiento,
                     ticketsPendings: response.length,
                     pasarela: montoPasarela ? true : false,
+                    vouchersTotales: response2.map(item => ({
+                        status: item.status,
+                        url: item.url,
+                    })),
                 };
             })
         );
@@ -57,6 +66,7 @@ export const handleGetAsientosIdMatrix = async (req, res) => {
             const newDato = asientosIdMatrix.find(x => x.codAsiento === asiento.codAsiento);
             newDato.isTicketsPendings = asiento.ticketsPendings
             newDato.isPasarela = asiento.pasarela
+            newDato.vouchersTotales = asiento.vouchersTotales
             // array2.push(newDato);
             return { ...newDato };
         });
