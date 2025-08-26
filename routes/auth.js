@@ -100,6 +100,7 @@ import { handleEditVoucherReservaFutbol } from '../handlers/handleEditVoucherRes
 import { handleGetConfigsReservaFutbol } from '../handlers/handleGetConfigsReservaFutbol.js';
 import { handlePostConfigsReservaFutbol } from '../handlers/handlePostConfigsReservaFutbol.js';
 import { handleLiberarHorarios } from '../handlers/handleLiberarHorarios.js';
+import { handleEditarAsiento } from '../handlers/handleEditarAsiento.js';
 
 const app = express();
 
@@ -181,6 +182,8 @@ router.post('/login', async (req, res) => {
             data: null, // Datos del usuario decodificados del token
             status: 406,
         });
+
+        console.log("usuario: ", user)
 
         // const validPassword = await bcrypt.compare(password, user.password);
         // if (!validPassword) return res.json({
@@ -1779,6 +1782,7 @@ router.patch("/patchEventId", handlePatchEventId);
 // Asientos
 router.post("/compraAsiento", handleCompraAsiento);
 router.get("/getAsientosIdMatrix", handleGetAsientosIdMatrix);
+router.patch("/editarAsiento", handleEditarAsiento);
 
 // reserva cancha de futbol
 router.post("/reservaFutbol", handleReservaFutbol);
