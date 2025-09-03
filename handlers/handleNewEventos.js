@@ -4,7 +4,7 @@ export const handleNewEventos = async (req, res) => {
     try {
         const body = await req.body;
         console.log("body: ", body)
-        const { capacity, title, dateEvent, urlFlyer, proyecto, precioEntradaGeneral, precioEntradaPremium, direccion } = body;
+        const { capacity, title, dateEvent, urlFlyer, proyecto, precioEntradaGeneral, precioEntradaPremium, direccion, precioEntradaPlatinium } = body;
 
         const nuevoEvento = {
             capacity: capacity,
@@ -14,7 +14,8 @@ export const handleNewEventos = async (req, res) => {
             urlFlyer: urlFlyer,
             proyecto: proyecto,
             precioEntradaGeneral,
-            precioEntradaPremium
+            precioEntradaPremium,
+            precioEntradaPlatinium,
         }
 
         const newEvento = await Eventos.create(nuevoEvento);
