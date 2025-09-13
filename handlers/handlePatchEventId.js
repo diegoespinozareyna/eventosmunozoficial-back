@@ -5,11 +5,11 @@ export const handlePatchEventId = async (req, res) => {
         const { id, proyecto } = req.query;
         console.log("id: ", id, proyecto)
 
-        const { title, dateEvent, urlFlyer, capacity, precioEntradaGeneral, precioEntradaPremium, direccion, precioEntradaPlatinium } = req.body;
+        const { title, dateEvent, urlFlyer, capacity, precioEntradaGeneral, precioEntradaPremium, direccion, precioEntradaPlatinium, cantidadPremium, cantidadPlatinium } = req.body;
 
         const evento = await Eventos.findOneAndUpdate(
             { _id: id, proyecto: proyecto },
-            { $set: { title, dateEvent, urlFlyer, capacity, precioEntradaGeneral, precioEntradaPremium, direccion, precioEntradaPlatinium } },
+            { $set: { title, dateEvent, urlFlyer, capacity, precioEntradaGeneral, precioEntradaPremium, direccion, precioEntradaPlatinium, cantidadPremium, cantidadPlatinium } },
             { new: true } // Devuelve el documento actualizado
         );
 

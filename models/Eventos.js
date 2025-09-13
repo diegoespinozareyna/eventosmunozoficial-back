@@ -12,6 +12,8 @@ const eventosSchema = new mongoose.Schema(
         precioEntradaGeneral: String,
         precioEntradaPremium: String,
         precioEntradaPlatinium: String,
+        cantidadPremium: String,
+        cantidadPlatinium: String,
     },
     {
         timestamps: true,
