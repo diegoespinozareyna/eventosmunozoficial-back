@@ -18,7 +18,7 @@ export const handleEncuestas = async (req, res) => {
         console.log("prom2: ", prom2)
         console.log("prom3: ", prom3)
 
-        const encuestasLimit = await EncuestaModel.find()
+        const encuestasLimit = await EncuestaModel.find({ local: req.query.local })
             .sort({ createdAt: -1 }) // Orden descendente (más reciente primero)
             .limit(50);
 
