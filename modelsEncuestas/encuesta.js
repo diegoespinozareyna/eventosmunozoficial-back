@@ -8,6 +8,7 @@ const encuestaSchema = new mongoose.Schema(
         pregunta3: String,
         pregunta4: String,
         pregunta5: String,
+        pregunta6: String,
         pregunta7: String,
         pregunta8: String,
         pregunta9: String,
