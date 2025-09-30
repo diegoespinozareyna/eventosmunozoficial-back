@@ -27,7 +27,7 @@ export const handleEncuestas = async (req, res) => {
 
         return res.status(201).json({
             message: 'Evento creado exitosamente.',
-            data: { encuestasLimit, prom1, prom2, prom3, prom4, ultimaSugerencia: encuestasLimit[0].pregunta4, TotalEncuestas: encuestas.length },
+            data: { encuestasLimit, prom1, prom2, prom3, prom4, ultimaSugerencia: encuestasLimit[0].pregunta5, TotalEncuestas: encuestas.length },
             status: 201,
         });
     } catch (error) {
