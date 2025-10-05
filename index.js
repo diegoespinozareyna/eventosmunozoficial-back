@@ -5,6 +5,7 @@ import cors from 'cors';
 import usersRouter from './routes/users.routes.js';
 import eventosRouter from './routes/eventos.routes.js';
 import encuestasRouter from './routes/encuestas.routes.js';
+import pasajesRouter from './routes/pasajes.routes.js';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', usersRouter);
 app.use('/api/eventos', eventosRouter);
 app.use('/api/encuestas', encuestasRouter);
+app.use('/api/pasajes', pasajesRouter);
 
 const PORT = process.env.PORT || 7000;
 const HOST = "0.0.0.0";
