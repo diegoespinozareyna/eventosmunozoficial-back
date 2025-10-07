@@ -9,6 +9,7 @@ const compraAsientoSchema = new mongoose.Schema(
         apellidoPaterno: String,
         apellidoMaterno: String,
         celular: String,
+        email: String,
         codAsiento: String, // numero de asiento
         precio: String,
         codMatrixTicket: String, // codigo id de evento
@@ -19,6 +20,8 @@ const compraAsientoSchema = new mongoose.Schema(
         patrocinadorId: String,
         fechaFin: Date,
         montoPasarela: String,
+        grupoAsientosComprados: String,
+        paradero: String,
     },
     {
         timestamps: true,

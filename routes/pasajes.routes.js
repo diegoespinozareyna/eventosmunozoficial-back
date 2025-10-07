@@ -4,6 +4,7 @@ import { handleGetPasajesAll } from '../handlePasajes/handleGetPasajesAll.js';
 import { handleGetPasajesId } from '../handlePasajes/handleGetPasajesId.js';
 import { handlePatchPasajestId } from '../handlePasajes/handlePatchPasajestId.js';
 import { handleGetAsientosIdMatrix } from '../handlePasajes/handleGetAsientosIdMatrix.js';
+import { handleComprarAsientoAll } from '../handlePasajes/handleComprarAsientoAll.js';
 
 const router = Router();
 
@@ -12,5 +13,6 @@ router.post('/newPasajesAll', handleNewPasajesAll);
 router.get('/getPasajesId', handleGetPasajesId);
 router.patch('/patchPasajestId', handlePatchPasajestId);
 router.get('/getAsientosIdMatrix', handleGetAsientosIdMatrix);
+router.post('/compraAsientoAll', handleComprarAsientoAll);
 
 export default router;
